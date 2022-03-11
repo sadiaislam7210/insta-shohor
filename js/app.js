@@ -15,6 +15,33 @@ const isLiked = (id) => {
     return likedPostsId?.length && !!likedPostsId.includes(id);
 };
 
+// Major bug fixed start here
+/* 
+Fixed a bug where if I report a post and than like a post, then all the reported posts also shows in main section ui 
+*/
+let reportedPost = []
+const addToLiked = (id) => {
+  let notReportedPost = []
+  likedPostsId.push(id);
+  if (reportedPostsId.length != 0) {
+    for (id of reportedPostsId) {
+      let finding = posts.find(post => post.id == id)
+      if (reportedPost.indexOf(finding) == -1) {
+        reportedPost.push(finding);
+      }
+    }
+    for (post of posts) {
+      if (reportedPost.indexOf(post) == -1 && notReportedPost.indexOf(post) == -1) {
+        notReportedPost.push(post)
+      }
+    }
+    showPosts(notReportedPost)
+  }
+
+
+
+};
+// Major bug fixed ends here
 const addToLiked = (id) => {
     likedPostsId.plus(id); 
     showPosts(posts);
