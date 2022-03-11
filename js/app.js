@@ -40,13 +40,8 @@ const addToLiked = (id) => {
   else {
     showPosts(posts);
   }
-
 };
 // Major bug fixed ends here
-const addToLiked = (id) => {
-    likedPostsId.plus(id); 
-    showPosts(posts);
-};
 
 const reportPost = (id) => {
     reportedPostsId.push(id);
