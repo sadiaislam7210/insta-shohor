@@ -37,8 +37,9 @@ const addToLiked = (id) => {
     }
     showPosts(notReportedPost)
   }
-
-
+  else {
+    showPosts(posts);
+  }
 
 };
 // Major bug fixed ends here
